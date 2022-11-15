@@ -18,7 +18,7 @@ function TramRoutes(props) {
 
   return (
     <div className="card routes-card">
-      <div className="card-header">Tram Routes</div>
+      <div className="card-header">Linii de tramvai</div>
       <div className="card-body">{displayLines}</div>
     </div>
   );

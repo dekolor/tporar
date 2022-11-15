@@ -18,7 +18,7 @@ function TrolleyRoutes(props) {
 
   return (
     <div className="card routes-card">
-      <div className="card-header">Trolley Routes</div>
+      <div className="card-header">Linii de troleibuz</div>
       <div className="card-body">{displayLines}</div>
     </div>
   );

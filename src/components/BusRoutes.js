@@ -67,7 +67,7 @@ function BusRoutes(props) {
 
   return (
     <div className="card routes-card">
-      <div className="card-header">Bus Routes</div>
+      <div className="card-header">Linii de autobuz</div>
       <div className="card-body">{displayLines}</div>
     </div>
   );

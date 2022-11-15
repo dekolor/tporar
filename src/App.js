@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BusRoutes from "./components/BusRoutes";
 import TramRoutes from "./components/TramRoutes";
+import TrolleyRoutes from "./components/TrolleyRoutes";
 import "./App.css";
 import axios from "axios";
 
@@ -23,6 +24,9 @@ function App() {
       <hr />
       <div className="routes">
         <TramRoutes linii={linii.filter((linie) => linie.type === "TRAM")} />
+        <TrolleyRoutes
+          linii={linii.filter((linie) => linie.type === "CABLE_CAR")}
+        />
         <BusRoutes linii={linii.filter((linie) => linie.type === "BUS")} />
       </div>
     </div>

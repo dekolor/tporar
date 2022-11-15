@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import BusRoutes from "./components/BusRoutes";
+import TramRoutes from "./components/TramRoutes";
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  const [linii, setLinii] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://lab.dekolor.ro/linii_stb.php")
+      .then((response) => {
+        console.log(response.data);
+        setLinii(response.data.lines);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+      <h1>test 123</h1>
+      <hr />
+      <div className="routes">
+        <TramRoutes linii={linii.filter((linie) => linie.type === "TRAM")} />
+        <BusRoutes linii={linii.filter((linie) => linie.type === "BUS")} />
+      </div>
     </div>
   );
 }

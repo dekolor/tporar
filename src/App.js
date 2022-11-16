@@ -21,71 +21,85 @@ function App() {
   const handleOrar = (linie) => {
     if (linie.organizatie_id === "1") {
       return (
-        <div className="row">
-          <div className="col">
-            <a
-              target={"_blank"}
-              rel="noreferrer"
-              className="btn btn-danger"
-              href={"https://stbsa.ro/ora_sta3/" + linie.nume + "%20Tur.pdf"}
-            >
-              {linie.capat_retur}
-            </a>
+        <>
+          Vezi plecarile de la capatul:
+          <div className="row">
+            <div className="col">
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                className="btn btn-danger"
+                href={"https://stbsa.ro/ora_sta3/" + linie.nume + "%20Tur.pdf"}
+              >
+                {linie.capat_retur}
+              </a>
+            </div>
+            <div className="col">
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                className="btn btn-danger"
+                href={
+                  "https://stbsa.ro/ora_sta3/" + linie.nume + "%20Retur.pdf"
+                }
+              >
+                {linie.capat_tur}
+              </a>
+              <div />
+            </div>
           </div>
-          <div className="col">
-            <a
-              target={"_blank"}
-              rel="noreferrer"
-              className="btn btn-danger"
-              href={"https://stbsa.ro/ora_sta3/" + linie.nume + "%20Retur.pdf"}
-            >
-              {linie.capat_tur}
-            </a>
-            <div />
-          </div>
-        </div>
+        </>
       );
     } else if (linie.organizatie_id === "35") {
       // STV
       return (
-        <div className="mx-auto" style={{ width: 100 }}>
-          <a
-            target={"_blank"}
-            rel="noreferrer"
-            className="btn btn-danger"
-            href={"https://www.stvsa.ro/traseu-linia-" + linie.nume + "/"}
-          >
-            Programul liniei {linie.nume}
-          </a>
-        </div>
+        <>
+          <b className="obj">Vezi plecarile pe site-ul STV:</b>
+          <div className="mx-auto" style={{ width: 200 }}>
+            <a
+              target={"_blank"}
+              rel="noreferrer"
+              className="btn btn-danger"
+              href={"https://www.stvsa.ro/traseu-linia-" + linie.nume + "/"}
+            >
+              Programul liniei {linie.nume}
+            </a>
+          </div>
+        </>
       );
     } else if (linie.organizatie_id === "36") {
       // STCM
       return (
-        <div className="mx-auto" style={{ width: 100 }}>
-          <a
-            target={"_blank"}
-            rel="noreferrer"
-            className="btn btn-danger"
-            href={"https://stcm.ro/program-r" + linie.nume + "/"}
-          >
-            Programul liniei {linie.nume}
-          </a>
-        </div>
+        <>
+          <b className="obj">Vezi plecarile pe site-ul STCM:</b>
+          <div className="mx-auto" style={{ width: 200 }}>
+            <a
+              target={"_blank"}
+              rel="noreferrer"
+              className="btn btn-danger"
+              href={"https://stcm.ro/program-r" + linie.nume + "/"}
+            >
+              Programul liniei {linie.nume}
+            </a>
+          </div>
+        </>
       );
     } else {
       // default (Fallback pentru RegioServ care nu au site in 2022 💀)
       return (
-        <div className="mx-auto" style={{ width: 100 }}>
-          <a
-            target={"_blank"}
-            rel="noreferrer"
-            className="btn btn-danger"
-            href={"https://info.stbsa.ro/traseu/" + linie.id_linie}
-          >
-            Programul liniei {linie.nume}
-          </a>
-        </div>
+        <>
+          <b className="obj">Vezi plecarile pe aplicatia InfoTB:</b>
+          <div className="mx-auto" style={{ width: 200 }}>
+            <a
+              target={"_blank"}
+              rel="noreferrer"
+              className="btn btn-danger"
+              href={"https://info.stbsa.ro/traseu/" + linie.id_linie}
+            >
+              Programul liniei {linie.nume}
+            </a>
+          </div>
+        </>
       );
     }
   };
@@ -94,7 +108,6 @@ function App() {
     axios
       .get("https://stb.dekolor.ro/api/simplelines")
       .then((response) => {
-        console.log(response.data);
         setLinii(response.data);
       })
       .catch(console.error);

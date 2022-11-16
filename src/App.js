@@ -24,6 +24,7 @@ function App() {
         <div className="row">
           <div className="col">
             <a
+              target={"_blank"}
               className="btn btn-danger"
               href={"https://stbsa.ro/ora_sta3/" + linie.nume + "%20Tur.pdf"}
             >
@@ -32,6 +33,7 @@ function App() {
           </div>
           <div className="col">
             <a
+              target={"_blank"}
               className="btn btn-danger"
               href={"https://stbsa.ro/ora_sta3/" + linie.nume + "%20Retur.pdf"}
             >
@@ -46,6 +48,7 @@ function App() {
       return (
         <div className="mx-auto" style={{ width: 100 }}>
           <a
+            target={"_blank"}
             className="btn btn-danger"
             href={"https://www.stvsa.ro/traseu-linia-" + linie.nume + "/"}
           >
@@ -58,6 +61,7 @@ function App() {
       return (
         <div className="mx-auto" style={{ width: 100 }}>
           <a
+            target={"_blank"}
             className="btn btn-danger"
             href={"https://stcm.ro/program-r" + linie.nume + "/"}
           >
@@ -70,6 +74,7 @@ function App() {
       return (
         <div className="mx-auto" style={{ width: 100 }}>
           <a
+            target={"_blank"}
             className="btn btn-danger"
             href={"https://info.stbsa.ro/traseu/" + linie.id_linie}
           >

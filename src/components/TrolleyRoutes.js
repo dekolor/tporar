@@ -10,8 +10,14 @@ function TrolleyRoutes(props) {
 
   const displayLines = linii.map((linie) => {
     return (
-      <button key={linie.id} className="btn btn-success badgelinie">
-        {linie.name}
+      <button
+        onClick={() => {
+          props.handleShow(linie);
+        }}
+        key={linie.id_linie}
+        className="btn btn-success badgelinie"
+      >
+        {linie.nume}
       </button>
     );
   });

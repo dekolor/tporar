@@ -10,8 +10,14 @@ function TramRoutes(props) {
 
   const displayLines = linii.map((linie) => {
     return (
-      <button key={linie.id} className="btn btn-danger badgelinie">
-        {linie.name}
+      <button
+        onClick={() => {
+          props.handleShow(linie);
+        }}
+        key={linie.id_linie}
+        className="btn btn-danger badgelinie"
+      >
+        {linie.nume}
       </button>
     );
   });

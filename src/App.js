@@ -19,7 +19,7 @@ function App() {
   };
 
   const handleOrar = (linie) => {
-    if (linie.organizatie_id === 1) {
+    if (linie.organizatie_id === "1") {
       return (
         <div className="row">
           <div className="col">
@@ -41,7 +41,7 @@ function App() {
           </div>
         </div>
       );
-    } else if (linie.organizatie_id === 35) {
+    } else if (linie.organizatie_id === "35") {
       // STV
       return (
         <div className="mx-auto" style={{ width: 100 }}>
@@ -53,7 +53,7 @@ function App() {
           </a>
         </div>
       );
-    } else if (linie.organizatie_id === 36) {
+    } else if (linie.organizatie_id === "36") {
       // STCM
       return (
         <div className="mx-auto" style={{ width: 100 }}>

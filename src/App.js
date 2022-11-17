@@ -115,7 +115,21 @@ function App() {
 
   return (
     <div className="App container">
-      <h1>Orar</h1>
+      <div className="d-flex justify-content-between">
+        <div className="p-2">
+          <h1>Transport Public Bucuresti</h1>
+        </div>
+        <div className="p-2">
+          <a
+            href="https://stbsa.ro/calatorii"
+            target={"_blank"}
+            rel="noreferrer"
+            className="btn btn-info"
+          >
+            Informatii bilet
+          </a>
+        </div>
+      </div>
       <hr />
       <div className="routes">
         <TramRoutes

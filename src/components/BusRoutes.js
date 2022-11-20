@@ -23,12 +23,14 @@ function BusRoutes(props) {
     );
   });
 
-  return (
-    <div className="card routes-card">
-      <div className="card-header">Linii de autobuz</div>
-      <div className="card-body">{displayLines}</div>
-    </div>
-  );
+  if (props.render) {
+    return (
+      <div className="card routes-card">
+        <div className="card-header">Linii de autobuz</div>
+        <div className="card-body">{displayLines}</div>
+      </div>
+    );
+  }
 }
 
 export default BusRoutes;

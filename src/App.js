@@ -11,7 +11,16 @@ function App() {
   const [linii, setLinii] = useState([]);
   const [linieSelectata, setLinieSelectata] = useState("");
   const [show, setShow] = useState(false);
+  const [filter, setFilter] = useState([true, true, true]);
 
+  const handleFilterChange = (pos) => {
+    //todo
+    const updatedFilterState = filter.map((item, index) =>
+      index !== pos ? !item : item
+    );
+
+    setFilter(updatedFilterState);
+  };
   const handleClose = () => setShow(false);
   const handleShow = (liniealeasa) => {
     setLinieSelectata(liniealeasa);
@@ -131,16 +140,48 @@ function App() {
         </div>
       </div>
       <hr />
+      Filtre:
+      <label>
+        <input
+          type="checkbox"
+          checked={filter[0]}
+          onChange={() => handleFilterChange(0)}
+          id="btn-check"
+          className="form-check-input filter"
+        />
+        Linii Tramvai
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          checked={filter[1]}
+          onChange={() => handleFilterChange(1)}
+          className="form-check-input filter"
+        />
+        Linii Troleibuz
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          checked={filter[2]}
+          onChange={() => handleFilterChange(2)}
+          className="form-check-input filter"
+        />
+        Linii Autobuz
+      </label>
       <div className="routes">
         <TramRoutes
+          render={filter[0]}
           handleShow={handleShow}
           linii={linii.filter((linie) => linie.tip === "TRAM")}
         />
         <TrolleyRoutes
+          render={filter[1]}
           handleShow={handleShow}
           linii={linii.filter((linie) => linie.tip === "CABLE_CAR")}
         />
         <BusRoutes
+          render={filter[2]}
           handleShow={handleShow}
           linii={linii.filter((linie) => linie.tip === "BUS")}
         />

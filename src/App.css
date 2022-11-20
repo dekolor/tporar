@@ -15,3 +15,8 @@
 .obj {
   padding-bottom: 50px;
 }
+
+.filter {
+  margin-right: 5px;
+  margin-left: 5px;
+}

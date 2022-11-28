@@ -11,16 +11,16 @@ function App() {
   const [linii, setLinii] = useState([]);
   const [linieSelectata, setLinieSelectata] = useState("");
   const [show, setShow] = useState(false);
-  const [filter, setFilter] = useState([true, true, true]);
+  //const [filter, setFilter] = useState([true, true, true]);
 
-  const handleFilterChange = (pos) => {
+  /*const handleFilterChange = (pos) => {
     //todo
     const updatedFilterState = filter.map((item, index) =>
       index !== pos ? !item : item
     );
 
     setFilter(updatedFilterState);
-  };
+  };*/
   const handleClose = () => setShow(false);
   const handleShow = (liniealeasa) => {
     setLinieSelectata(liniealeasa);
@@ -140,7 +140,7 @@ function App() {
         </div>
       </div>
       <hr />
-      Filtre:
+      {/* Filtre:
       <label>
         <input
           type="checkbox"
@@ -168,20 +168,20 @@ function App() {
           className="form-check-input filter"
         />
         Linii Autobuz
-      </label>
+      </label> */}
       <div className="routes">
         <TramRoutes
-          render={filter[0]}
+          render={true}
           handleShow={handleShow}
           linii={linii.filter((linie) => linie.tip === "TRAM")}
         />
         <TrolleyRoutes
-          render={filter[1]}
+          render={true}
           handleShow={handleShow}
           linii={linii.filter((linie) => linie.tip === "CABLE_CAR")}
         />
         <BusRoutes
-          render={filter[2]}
+          render={true}
           handleShow={handleShow}
           linii={linii.filter((linie) => linie.tip === "BUS")}
         />

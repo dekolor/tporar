@@ -130,7 +130,7 @@ function App() {
         </div>
         <div className="p-2">
           <a
-            href="https://stbsa.ro/calatorii"
+            href="https://www.stb.ro/tarife"
             target={"_blank"}
             rel="noreferrer"
             className="btn btn-info"

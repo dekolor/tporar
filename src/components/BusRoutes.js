@@ -14,11 +14,11 @@ function BusRoutes(props) {
         onClick={() => {
           props.handleShow(linie);
         }}
-        key={linie.id_linie}
+        key={linie.id}
         className="btn btn-primary badgelinie"
-        style={{ background: linie.culoare, borderColor: linie.culoare }}
+        style={{ background: linie.color, borderColor: linie.color }}
       >
-        {linie.nume}
+        {linie.name}
       </button>
     );
   });

@@ -9,7 +9,7 @@ import axios from "axios";
 
 function App() {
   const [linii, setLinii] = useState([]);
-  const [linieSelectata, setLinieSelectata] = useState("");
+  const [linieSelectata, setLinieSelectata] = useState([]);
   const [show, setShow] = useState(false);
   //const [filter, setFilter] = useState([true, true, true]);
 
@@ -28,7 +28,7 @@ function App() {
   };
 
   const handleOrar = (linie) => {
-    if (linie.organizatie_id === "1") {
+    if (linie.organization?.id === "1") {
       return (
         <>
           Vezi plecarile de la capatul:
@@ -38,9 +38,9 @@ function App() {
                 target={"_blank"}
                 rel="noreferrer"
                 className="btn btn-danger"
-                href={"https://stbsa.ro/ora_sta3/" + linie.nume + "%20Tur.pdf"}
+                href={"https://stbsa.ro/ora_sta3/" + linie.name + "%20Tur.pdf"}
               >
-                {linie.capat_retur}
+                1
               </a>
             </div>
             <div className="col">
@@ -49,17 +49,17 @@ function App() {
                 rel="noreferrer"
                 className="btn btn-danger"
                 href={
-                  "https://stbsa.ro/ora_sta3/" + linie.nume + "%20Retur.pdf"
+                  "https://stbsa.ro/ora_sta3/" + linie.name + "%20Retur.pdf"
                 }
               >
-                {linie.capat_tur}
+                2
               </a>
               <div />
             </div>
           </div>
         </>
       );
-    } else if (linie.organizatie_id === "35") {
+    } else if (linie.organization?.id === "35") {
       // STV
       return (
         <>
@@ -69,14 +69,14 @@ function App() {
               target={"_blank"}
               rel="noreferrer"
               className="btn btn-danger"
-              href={"https://www.stvsa.ro/traseu-linia-" + linie.nume + "/"}
+              href={"https://www.stvsa.ro/traseu-linia-" + linie.name + "/"}
             >
               Programul liniei {linie.nume}
             </a>
           </div>
         </>
       );
-    } else if (linie.organizatie_id === "36") {
+    } else if (linie.organization?.id === "36") {
       // STCM
       return (
         <>
@@ -86,7 +86,7 @@ function App() {
               target={"_blank"}
               rel="noreferrer"
               className="btn btn-danger"
-              href={"https://stcm.ro/program-r" + linie.nume + "/"}
+              href={"https://stcm.ro/program-r" + linie.name + "/"}
             >
               Programul liniei {linie.nume}
             </a>
@@ -103,7 +103,7 @@ function App() {
               target={"_blank"}
               rel="noreferrer"
               className="btn btn-danger"
-              href={"https://info.stbsa.ro/traseu/" + linie.id_linie}
+              href={"https://info.stbsa.ro/traseu/" + linie.id}
             >
               Programul liniei {linie.nume}
             </a>
@@ -115,9 +115,9 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://stb.dekolor.ro/api/simplelines")
+      .get("https://info.stbsa.ro/rp/api/lines")
       .then((response) => {
-        setLinii(response.data);
+        setLinii(response.data.lines);
       })
       .catch(console.error);
   }, []);
@@ -173,22 +173,22 @@ function App() {
         <TramRoutes
           render={true}
           handleShow={handleShow}
-          linii={linii.filter((linie) => linie.tip === "TRAM")}
+          linii={linii.filter((linie) => linie.type === "TRAM")}
         />
         <TrolleyRoutes
           render={true}
           handleShow={handleShow}
-          linii={linii.filter((linie) => linie.tip === "CABLE_CAR")}
+          linii={linii.filter((linie) => linie.type === "CABLE_CAR")}
         />
         <BusRoutes
           render={true}
           handleShow={handleShow}
-          linii={linii.filter((linie) => linie.tip === "BUS")}
+          linii={linii.filter((linie) => linie.type === "BUS")}
         />
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Orar linie: {linieSelectata.nume}</Modal.Title>
+          <Modal.Title>Orar linie: {linieSelectata.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{handleOrar(linieSelectata)}</Modal.Body>
         <Modal.Footer>

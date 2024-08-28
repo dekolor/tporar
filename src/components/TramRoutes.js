@@ -14,10 +14,10 @@ function TramRoutes(props) {
         onClick={() => {
           props.handleShow(linie);
         }}
-        key={linie.id_linie}
+        key={linie.id}
         className="btn btn-danger badgelinie"
       >
-        {linie.nume}
+        {linie.name}
       </button>
     );
   });
